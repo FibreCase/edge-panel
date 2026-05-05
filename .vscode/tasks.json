@@ -1,0 +1,17 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build and Upload Flutter-Pi",
+            "type": "shell",
+            "command": "ssh ncepu-pa 'sudo systemctl stop flutter-pi.service' && flutterpi_tool build --release --arch=arm64 && rsync -avh build/flutter-pi/aarch64-generic ncepu-pa:~ && ssh ncepu-pa 'sudo systemctl start flutter-pi.service'"
+        },
+        {
+            "label": "Docker Image",
+            "type": "shell",
+            "command": "cd python && docker buildx build --push --platform linux/arm64,linux/amd64 -t cr.fyb.pp.ua:55443/flutter-desktop-panel-backend ."
+        }
+    ]
+}
