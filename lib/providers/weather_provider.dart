@@ -17,12 +17,12 @@ class WeatherProvider extends ChangeNotifier {
   late Timer _timer;
 
   WeatherProvider() {
-    _currentWeather = 'Unknown';
+    _currentWeather = 'Unknown Exception';
     _currentTemperature = 'N/A';
     _currentWeatherIconPath = 'assets/weather-icons/100-fill.svg';
     _currentTextNotification = '滚滚长江东逝水，浪花淘尽英雄。是非成败转头空。青山依旧在，几度夕阳红。';
     _isWarningColor = true;
-    _currentAqi = 1000;
+    _currentAqi = 999;
     _currentAqiCategory = 'N/A';
     _currentAqiColor = Color.fromARGB(255, 255, 255, 255);
     _currentAqiFrontColor = Color.fromARGB(255, 0, 0, 0);

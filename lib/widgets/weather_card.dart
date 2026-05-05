@@ -49,20 +49,43 @@ class WeatherCard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 16),
+                      const SizedBox(width: 8),
                       Column(
                         children: [
-                          Text(
-                            weatherProvider.currentWeather,
-                            style: TextStyle(
-                              fontSize: 35,
-                              height: 1.1,
-                              fontWeight: FontWeight.normal,
-                              color: weatherProvider.isWarningColor
-                                  ? colorScheme.onError
-                                  : colorScheme.onSecondary,
+                          if (weatherProvider.currentWeather.length > 10)
+                            SizedBox(
+                              width: 190,
+                              height: 45,
+                              child: Marquee(
+                                text: weatherProvider.currentWeather,
+                                style: TextStyle(
+                                  fontSize: 35,
+                                  height: 1.0,
+                                  fontWeight: FontWeight.normal,
+                                  color: weatherProvider.isWarningColor
+                                      ? colorScheme.onError
+                                      : colorScheme.onSecondary,
+                                ),
+                                scrollAxis: Axis.horizontal,
+                                blankSpace: 50.0,
+                                velocity: 50.0,
+                                pauseAfterRound: const Duration(seconds: 1),
+                                startPadding: 0.0,
+                              ),
+                            )
+                          else
+                            Text(
+                              weatherProvider.currentWeather,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 35,
+                                height: 1.1,
+                                fontWeight: FontWeight.normal,
+                                color: weatherProvider.isWarningColor
+                                    ? colorScheme.onError
+                                    : colorScheme.onSecondary,
+                              ),
                             ),
-                          ),
                           Text(
                             weatherProvider.currentTemperature,
                             style: TextStyle(
