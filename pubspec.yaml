@@ -1,5 +1,5 @@
-name: flutter_desktop_panel
-description: "A new Flutter project."
+name: desk_panel
+description: "This is a Flutter information dashboard designed for desktop use. The main interface uses a horizontal rotating layout to display weather, time, to-do/event information, and message feed all on the same screen."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev

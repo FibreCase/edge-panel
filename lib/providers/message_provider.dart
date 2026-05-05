@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter_desktop_panel/services/realtime_socket_service.dart';
-import 'package:flutter_desktop_panel/widgets/message_card.dart';
+import 'package:desk_panel/services/realtime_socket_service.dart';
+import 'package:desk_panel/widgets/message_card.dart';
 
 class MessageProvider extends ChangeNotifier {
   late Widget _currentMessageWidget;

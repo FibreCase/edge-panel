@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_desktop_panel/pages/home.dart';
-import 'package:flutter_desktop_panel/providers/time_provider.dart';
-import 'package:flutter_desktop_panel/providers/weather_provider.dart';
-import 'package:flutter_desktop_panel/providers/global_provider.dart';
-import 'package:flutter_desktop_panel/providers/event_provider.dart';
-import 'package:flutter_desktop_panel/providers/message_provider.dart';
+import 'package:desk_panel/pages/home.dart';
+import 'package:desk_panel/providers/time_provider.dart';
+import 'package:desk_panel/providers/weather_provider.dart';
+import 'package:desk_panel/providers/global_provider.dart';
+import 'package:desk_panel/providers/event_provider.dart';
+import 'package:desk_panel/providers/message_provider.dart';
 
 void main() {
   runApp(const MyApp());

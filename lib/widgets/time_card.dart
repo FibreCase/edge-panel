@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:flutter_desktop_panel/providers/time_provider.dart';
+import 'package:desk_panel/providers/time_provider.dart';
 
 class TimeCard extends StatelessWidget {
   const TimeCard({super.key, required this.colorScheme});

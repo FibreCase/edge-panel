@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marquee/marquee.dart';
-import 'package:flutter_desktop_panel/providers/weather_provider.dart';
+import 'package:desk_panel/providers/weather_provider.dart';
 
 class WeatherCard extends StatelessWidget {
   const WeatherCard({super.key, required this.colorScheme});
