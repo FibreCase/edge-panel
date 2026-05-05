@@ -21,6 +21,8 @@ class MessageCard extends StatelessWidget {
         return MessageText(data: data, colorScheme: colorScheme);
       case "idle":
         return MessageIdle(data: data, colorScheme: colorScheme);
+      case "notify":
+        return MessageNotify(data: data, colorScheme: colorScheme);
       default:
         return Placeholder();
     }
@@ -74,6 +76,78 @@ class MessageIdle extends StatelessWidget {
                 fontSize: 12,
                 fontWeight: FontWeight.normal,
                 color: colorScheme.onPrimaryContainer,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MessageNotify extends StatelessWidget {
+  const MessageNotify({
+    super.key,
+    required this.colorScheme,
+    required this.data,
+  });
+  final List<String> data;
+  final ColorScheme colorScheme;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: double.infinity,
+      width: 425,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: colorScheme.primary,
+        borderRadius: BorderRadius.circular(32),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(96, 0, 0, 0),
+            blurRadius: 8,
+            offset: const Offset(0, 6),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 28,
+            child: Text(
+              data[2],
+              style: GoogleFonts.notoSansSc(
+                height: 1.1,
+                fontSize: 24,
+                fontWeight: FontWeight.w300,
+                color: colorScheme.onPrimary,
+              ),
+            ),
+          ),
+          const Spacer(),
+          Center(
+            child: Text(
+              data[0],
+              style: GoogleFonts.notoSansSc(
+                height: 1.1,
+                fontSize: 42,
+                fontWeight: FontWeight.bold,
+                color: colorScheme.onPrimary,
+              ),
+            ),
+          ),
+          const Spacer(),
+          SizedBox(
+            height: 16,
+            child: Text(
+              data[1],
+              style: TextStyle(
+                height: 1.0,
+                fontSize: 12,
+                fontWeight: FontWeight.normal,
+                color: colorScheme.onPrimary,
               ),
             ),
           ),

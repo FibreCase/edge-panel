@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
                 ? ThemeMode.dark
                 : ThemeMode.light,
             debugShowCheckedModeBanner: false,
-            home: RotatedBox(quarterTurns: 3, child: HomePage()),
+            home: RotatedBox(quarterTurns: 0, child: HomePage()),
           );
         },
       ),

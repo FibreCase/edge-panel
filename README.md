@@ -11,7 +11,7 @@
 - 天气卡片：当前天气、温度、空气质量和降水提示。
 - 时间卡片：当前日期和秒级更新时间。
 - 事件卡片：下一条日程/事件的时间、日期、地点和标题。
-- 消息流：支持文本消息和图片消息，内容由后端实时更新。
+- 消息流：支持文本消息、图片消息和通知消息，内容由后端实时更新。
 
 ## 技术栈
 
@@ -42,6 +42,7 @@
 
 - 提供 `GET /api/messages` 和 `POST /api/messages`。
 - 提供 `POST /api/messages/upload-image` 用于上传图片消息。
+- 提供 `POST /api/messages/webhook/notify` 供其他应用推送通知消息。
 - 使用 SQLite 持久化消息数据。
 - 通过 Socket.IO 推送 `messages_updated`，让前端立即刷新消息区。
 - 聚合天气、降水和空气质量信息，并通过 Socket.IO 响应 `request_weather`。
@@ -89,8 +90,9 @@ flutter run -d linux
 ## 接口一览
 
 - `GET /api/messages`：获取消息列表
-- `POST /api/messages`：创建文本或图片消息记录
+- `POST /api/messages`：创建文本、图片或通知消息记录
 - `POST /api/messages/upload-image`：上传图片并生成图片消息
+- `POST /api/messages/webhook/notify`：其他应用通过 webhook 创建通知消息
 - `POST /api/messages/clear`：清空消息和已上传文件
 
 ## 说明

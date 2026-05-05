@@ -106,6 +106,17 @@ class MessageProvider extends ChangeNotifier {
       return _resolveImageUrl(content);
     }
 
+    if (type == 'notify') {
+      final sourceName = message['source_name']?.toString() ?? '';
+      final createdAt = message['created_at']?.toString() ?? '';
+
+      return [
+        content,
+        _formatMessageTime(createdAt),
+        sourceName.isNotEmpty ? sourceName : '通知',
+      ];
+    }
+
     final createdAt = message['created_at']?.toString() ?? '';
     return [content, _formatMessageTime(createdAt)];
   }

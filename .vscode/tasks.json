@@ -6,7 +6,7 @@
         {
             "label": "Build and Upload Flutter-Pi",
             "type": "shell",
-            "command": "ssh ncepu-pa 'sudo systemctl stop flutter-pi.service' && flutterpi_tool build --release --arch=arm64 && rsync -avh build/flutter-pi/aarch64-generic ncepu-pa:~ && ssh ncepu-pa 'sudo systemctl start flutter-pi.service'"
+            "command": "ssh ncepu-pa 'sudo systemctl stop flutter-pi.service' && flutterpi_tool build --release --arch=arm64 && rsync -avh --delete --checksum build/flutter-pi/aarch64-generic/ ncepu-pa:~/aarch64-generic/ && ssh ncepu-pa 'sudo systemctl start flutter-pi.service'"
         },
         {
             "label": "Docker Image",
