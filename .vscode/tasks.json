@@ -11,7 +11,7 @@
         {
             "label": "Docker Image",
             "type": "shell",
-            "command": "cd python && docker buildx build --push --platform linux/arm64,linux/amd64 -t cr.fyb.pp.ua:55443/flutter-desktop-panel-backend ."
+            "command": "cd python && docker buildx build --push --platform linux/arm64,linux/amd64 -t cr.fyb.pp.ua:55443/flutter-desktop-panel-backend . && ssh ncepu-pa 'cd compose && docker compose up -d --pull always'"
         }
     ]
 }
