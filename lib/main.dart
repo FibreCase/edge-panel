@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:desk_panel/pages/home.dart';
+import 'package:desk_panel/pages/wait.dart';
 import 'package:desk_panel/providers/time_provider.dart';
 import 'package:desk_panel/providers/weather_provider.dart';
 import 'package:desk_panel/providers/global_provider.dart';
@@ -49,7 +50,12 @@ class MyApp extends StatelessWidget {
                 ? ThemeMode.dark
                 : ThemeMode.light,
             debugShowCheckedModeBanner: false,
-            home: RotatedBox(quarterTurns: 3, child: HomePage()),
+            home: RotatedBox(
+              quarterTurns: 3,
+              child: globalProvider.isSocketConnected
+                  ? const HomePage()
+                  : const WaitPage(),
+            ),
           );
         },
       ),
