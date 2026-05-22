@@ -32,8 +32,8 @@ class HomePage extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 clipBehavior: Clip.none,
                 children: [
-                  EventCard(colorScheme: colorScheme),
-                  const SizedBox(width: 24),
+                  // EventCard(colorScheme: colorScheme),
+                  // const SizedBox(width: 24),
                   Consumer<MessageProvider>(
                     builder: (context, messageProvider, child) {
                       return messageProvider.currentMessageWidget;

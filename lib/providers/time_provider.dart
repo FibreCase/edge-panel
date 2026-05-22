@@ -50,7 +50,15 @@ class TimeProvider extends ChangeNotifier {
   }
 
   void _updateTime() {
-    _currentTime = _formatTime(DateTime.now());
+    final now = DateTime.now();
+    _currentTime = _formatTime(now);
+
+    // 检查日期是否改变（午夜跨越检测）
+    final newDate = _formatDate(now);
+    if (_currentDate != newDate) {
+      _currentDate = newDate;
+    }
+
     notifyListeners();
   }
 
