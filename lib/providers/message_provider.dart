@@ -89,6 +89,9 @@ class MessageProvider extends ChangeNotifier {
                 colorScheme: colorScheme,
                 type: messages[index]['type']?.toString() ?? 'text',
                 data: _buildCardData(messages[index]),
+                onDoubleTap: () => _deleteMessage(
+                  int.tryParse(messages[index]['id']?.toString() ?? '') ?? -1,
+                ),
               ),
               if (index != messages.length - 1) const SizedBox(width: 24),
             ],
@@ -171,6 +174,24 @@ class MessageProvider extends ChangeNotifier {
     required int id,
   }) {
     return RealtimeSocketService.instance.sendMessage(command: command, id: id);
+  }
+
+  Future<void> _deleteMessage(int messageId) async {
+    if (messageId <= 0) {
+      return;
+    }
+
+    try {
+      final response = await http.delete(
+        _messageApiUri.replace(path: '/api/messages/$messageId'),
+      );
+
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        await _fetchAndBuildMessages();
+      }
+    } catch (_) {
+      return;
+    }
   }
 
   @override
