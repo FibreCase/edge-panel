@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:desk_panel/utils/logger.dart';
+import 'package:edge_panel/utils/logger.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 
 class RealtimeSocketService {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:desk_panel/widgets/weather_card.dart';
-import 'package:desk_panel/widgets/time_card.dart';
-import 'package:desk_panel/widgets/event_card.dart';
-import 'package:desk_panel/providers/message_provider.dart';
+import 'package:edge_panel/widgets/weather_card.dart';
+import 'package:edge_panel/widgets/time_card.dart';
+import 'package:edge_panel/widgets/event_card.dart';
+import 'package:edge_panel/providers/message_provider.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sunrise_sunset_calc/sunrise_sunset_calc.dart';
-import 'package:desk_panel/services/realtime_socket_service.dart';
-import 'package:desk_panel/utils/logger.dart';
+import 'package:edge_panel/services/realtime_socket_service.dart';
+import 'package:edge_panel/utils/logger.dart';
 import 'dart:async';
 
 class GlobalProvider extends ChangeNotifier {

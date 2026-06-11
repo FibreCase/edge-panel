@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'dart:async';
-import 'package:desk_panel/utils/logger.dart';
-import 'package:desk_panel/services/realtime_socket_service.dart';
+import 'package:edge_panel/utils/logger.dart';
+import 'package:edge_panel/services/realtime_socket_service.dart';
 
 class EventProvider extends ChangeNotifier {
   late String _nextEventName;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marquee/marquee.dart';
-import 'package:desk_panel/providers/event_provider.dart';
+import 'package:edge_panel/providers/event_provider.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({super.key, required this.colorScheme});

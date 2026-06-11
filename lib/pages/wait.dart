@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:desk_panel/widgets/time_card.dart';
+import 'package:edge_panel/widgets/time_card.dart';
 
 class WaitPage extends StatelessWidget {
   const WaitPage({super.key});
