@@ -2,7 +2,7 @@
 
 一个面向桌面场景的 Flutter 信息面板，主界面采用横向旋转布局，把天气、时间、待办/事件和消息流集中展示在同一屏幕上。项目由 Flutter 前端和 Python 后端组成，前端通过 Socket.IO 和 HTTP 接口实时拉取数据，后端负责天气聚合、事件推送、消息存储和图片上传。
 
-![成品展示图](repo_files/images/image.png)
+![成品展示图](repo_files/images/image.jpg)
 
 ## 项目概览
 
