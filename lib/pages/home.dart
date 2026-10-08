@@ -22,7 +22,10 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  WeatherCard(colorScheme: colorScheme),
+                  SizedBox(
+                    height: 255,
+                    child: WeatherCard(colorScheme: colorScheme),
+                  ),
                   const SizedBox(height: 24),
                   Expanded(child: EventCard(colorScheme: colorScheme)),
                 ],
