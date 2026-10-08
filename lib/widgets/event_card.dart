@@ -47,22 +47,20 @@ class EventCard extends StatelessWidget {
                         color: colorScheme.onPrimaryContainer,
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  children: [
+                    const Spacer(),
+                    Text(
+                      eventProvider.nextEventDate,
+                      textAlign: TextAlign.end,
+                      style: TextStyle(
+                        fontSize: 28,
+                        color: colorScheme.onPrimaryContainer,
+                      ),
+                    ),
+                    SizedBox(width: 16),
                     Container(
                       decoration: BoxDecoration(
                         color: colorScheme.primary,
                         borderRadius: BorderRadius.circular(16),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //     color: Color.fromARGB(96, 0, 0, 0),
-                        //     blurRadius: 8,
-                        //     offset: const Offset(0, 6),
-                        //   ),
-                        // ],
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(
@@ -81,17 +79,9 @@ class EventCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Spacer(),
-                    Text(
-                      eventProvider.nextEventDate,
-                      textAlign: TextAlign.end,
-                      style: TextStyle(
-                        fontSize: 28,
-                        color: colorScheme.onPrimaryContainer,
-                      ),
-                    ),
                   ],
                 ),
+
                 const SizedBox(height: 8),
                 LayoutBuilder(
                   builder: (context, constraints) {

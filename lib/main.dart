@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,6 +10,7 @@ import 'package:edge_panel/providers/weather_provider.dart';
 import 'package:edge_panel/providers/global_provider.dart';
 import 'package:edge_panel/providers/event_provider.dart';
 import 'package:edge_panel/providers/message_provider.dart';
+import 'package:edge_panel/providers/sensor_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +26,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => TimeProvider()),
         ChangeNotifierProvider(create: (_) => WeatherProvider()),
+        ChangeNotifierProvider(create: (_) => SensorProvider()),
         ChangeNotifierProvider(create: (_) => GlobalProvider()),
         ChangeNotifierProvider(create: (_) => EventProvider()),
         ChangeNotifierProvider(create: (_) => MessageProvider()),
@@ -51,7 +55,10 @@ class MyApp extends StatelessWidget {
                 : ThemeMode.light,
             debugShowCheckedModeBanner: false,
             home: RotatedBox(
-              quarterTurns: 3,
+              quarterTurns:
+                  Platform.environment['FLUTTER_PI_ROTATED_NEEDED'] == '1'
+                  ? 3
+                  : 0,
               child: globalProvider.isSocketConnected
                   ? const HomePage()
                   : const WaitPage(),

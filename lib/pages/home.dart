@@ -1,7 +1,7 @@
+import 'package:edge_panel/widgets/event_card.dart';
 import 'package:flutter/material.dart';
 import 'package:edge_panel/widgets/weather_card.dart';
 import 'package:edge_panel/widgets/time_card.dart';
-import 'package:edge_panel/widgets/event_card.dart';
 import 'package:edge_panel/providers/message_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -15,29 +15,39 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                WeatherCard(colorScheme: colorScheme),
-                const SizedBox(width: 24),
-                TimeCard(colorScheme: colorScheme),
-              ],
-            ),
-            const SizedBox(height: 24),
             Expanded(
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                clipBehavior: Clip.none,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // EventCard(colorScheme: colorScheme),
-                  // const SizedBox(width: 24),
-                  Consumer<MessageProvider>(
-                    builder: (context, messageProvider, child) {
-                      return messageProvider.currentMessageWidget;
-                    },
+                  WeatherCard(colorScheme: colorScheme),
+                  const SizedBox(height: 24),
+                  Expanded(child: EventCard(colorScheme: colorScheme)),
+                ],
+              ),
+            ),
+            const SizedBox(width: 24),
+            SizedBox(
+              width: 550,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  TimeCard(colorScheme: colorScheme),
+                  const SizedBox(height: 24),
+                  Expanded(
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      clipBehavior: Clip.hardEdge,
+                      children: [
+                        Consumer<MessageProvider>(
+                          builder: (context, messageProvider, child) {
+                            return messageProvider.currentMessageWidget;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

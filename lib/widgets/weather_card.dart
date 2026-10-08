@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marquee/marquee.dart';
 import 'package:edge_panel/providers/weather_provider.dart';
+import 'package:edge_panel/providers/sensor_provider.dart';
 
 class WeatherCard extends StatelessWidget {
   const WeatherCard({super.key, required this.colorScheme});
@@ -13,8 +14,8 @@ class WeatherCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Consumer<WeatherProvider>(
-        builder: (context, weatherProvider, child) {
+      child: Consumer2<WeatherProvider, SensorProvider>(
+        builder: (context, weatherProvider, sensorProvider, child) {
           return Container(
             decoration: BoxDecoration(
               color: weatherProvider.isWarningColor
@@ -91,7 +92,7 @@ class WeatherCard extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 60,
                               height: 1.0,
-                              fontWeight: FontWeight.normal,
+                              fontWeight: FontWeight.w600,
                               color: weatherProvider.isWarningColor
                                   ? colorScheme.onError
                                   : colorScheme.onSecondary,
@@ -130,13 +131,7 @@ class WeatherCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 4),
-                  Divider(
-                    thickness: 1,
-                    color: weatherProvider.isWarningColor
-                        ? colorScheme.onError
-                        : colorScheme.onSecondary,
-                  ),
+                  const SizedBox(height: 8),
                   Row(
                     children: [
                       Expanded(
@@ -190,6 +185,88 @@ class WeatherCard extends StatelessWidget {
                               );
                             }
                           },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    thickness: 1,
+                    color: weatherProvider.isWarningColor
+                        ? colorScheme.onError
+                        : colorScheme.onSecondary,
+                  ),
+                  SizedBox(height: 4),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        sensorProvider.temperature,
+                        style: TextStyle(
+                          fontSize: 42,
+                          height: 1.2,
+                          fontWeight: FontWeight.w700,
+                          color: weatherProvider.isWarningColor
+                              ? colorScheme.onError
+                              : colorScheme.onSecondary,
+                        ),
+                      ),
+                      Text(
+                        "℃",
+                        style: TextStyle(
+                          fontSize: 24,
+                          height: 1.2,
+                          fontWeight: FontWeight.w500,
+                          color: weatherProvider.isWarningColor
+                              ? colorScheme.onError
+                              : colorScheme.onSecondary,
+                        ),
+                      ),
+                      Spacer(),
+                      Text(
+                        sensorProvider.humidity,
+                        style: TextStyle(
+                          fontSize: 42,
+                          height: 1.2,
+                          fontWeight: FontWeight.w700,
+                          color: weatherProvider.isWarningColor
+                              ? colorScheme.onError
+                              : colorScheme.onSecondary,
+                        ),
+                      ),
+                      Text(
+                        "%",
+                        style: TextStyle(
+                          fontSize: 24,
+                          height: 1.2,
+                          fontWeight: FontWeight.w500,
+                          color: weatherProvider.isWarningColor
+                              ? colorScheme.onError
+                              : colorScheme.onSecondary,
+                        ),
+                      ),
+                      Spacer(),
+                      Text(
+                        sensorProvider.eco2,
+                        style: TextStyle(
+                          fontSize: 42,
+                          height: 1.2,
+                          fontWeight: FontWeight.w700,
+                          color: weatherProvider.isWarningColor
+                              ? colorScheme.onError
+                              : colorScheme.onSecondary,
+                        ),
+                      ),
+                      Text(
+                        "ppm",
+                        style: TextStyle(
+                          fontSize: 24,
+                          height: 1.2,
+                          fontWeight: FontWeight.w500,
+                          color: weatherProvider.isWarningColor
+                              ? colorScheme.onError
+                              : colorScheme.onSecondary,
                         ),
                       ),
                     ],
