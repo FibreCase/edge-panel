@@ -12,7 +12,6 @@ class TimeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: colorScheme.tertiary,
         borderRadius: BorderRadius.circular(32),
         boxShadow: [
           BoxShadow(
@@ -24,33 +23,44 @@ class TimeCard extends StatelessWidget {
       ),
       height: 200,
       width: 550,
-      child: Center(
-        child: Consumer<TimeProvider>(
-          builder: (context, timeProvider, child) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  timeProvider.currentDate,
-                  style: TextStyle(
-                    fontSize: 50,
-                    height: 1.0,
-                    fontWeight: FontWeight.normal,
-                    color: colorScheme.onTertiary,
-                  ),
-                ),
-                Text(
-                  timeProvider.currentTime,
-                  style: TextStyle(
-                    height: 1.1,
-                    fontSize: 100,
-                    fontWeight: FontWeight.bold,
-                    color: colorScheme.onTertiary,
-                  ),
-                ),
-              ],
-            );
-          },
+      child: Material(
+        color: colorScheme.tertiary,
+        borderRadius: BorderRadius.circular(32),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: context.read<TimeProvider>().handleCardPressed,
+          borderRadius: BorderRadius.circular(32),
+          splashColor: colorScheme.onTertiary.withValues(alpha: 0.2),
+          highlightColor: colorScheme.onTertiary.withValues(alpha: 0.2),
+          child: Center(
+            child: Consumer<TimeProvider>(
+              builder: (context, timeProvider, child) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      timeProvider.dateDisplayText,
+                      style: TextStyle(
+                        fontSize: 50,
+                        height: 1.0,
+                        fontWeight: FontWeight.normal,
+                        color: colorScheme.onTertiary,
+                      ),
+                    ),
+                    Text(
+                      timeProvider.currentTime,
+                      style: TextStyle(
+                        height: 1.1,
+                        fontSize: 100,
+                        fontWeight: FontWeight.bold,
+                        color: colorScheme.onTertiary,
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
         ),
       ),
     );

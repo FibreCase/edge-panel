@@ -11,6 +11,7 @@ import 'package:edge_panel/providers/global_provider.dart';
 import 'package:edge_panel/providers/event_provider.dart';
 import 'package:edge_panel/providers/message_provider.dart';
 import 'package:edge_panel/providers/sensor_provider.dart';
+import 'package:edge_panel/providers/action_button_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => GlobalProvider()),
         ChangeNotifierProvider(create: (_) => EventProvider()),
         ChangeNotifierProvider(create: (_) => MessageProvider()),
+        ChangeNotifierProvider(create: (_) => ActionButtonProvider()),
       ],
       child: Consumer<GlobalProvider>(
         builder: (context, globalProvider, child) {

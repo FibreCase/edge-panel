@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:edge_panel/widgets/weather_card.dart';
 import 'package:edge_panel/widgets/time_card.dart';
 import 'package:edge_panel/providers/message_provider.dart';
+import 'package:edge_panel/widgets/action_button.dart';
+import 'package:edge_panel/widgets/left_edge_clip.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -28,6 +30,11 @@ class HomePage extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   Expanded(child: EventCard(colorScheme: colorScheme)),
+                  const SizedBox(height: 24),
+                  SizedBox(
+                    height: 50,
+                    child: ActionButton(colorScheme: colorScheme),
+                  ),
                 ],
               ),
             ),
@@ -40,16 +47,18 @@ class HomePage extends StatelessWidget {
                   TimeCard(colorScheme: colorScheme),
                   const SizedBox(height: 24),
                   Expanded(
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      clipBehavior: Clip.hardEdge,
-                      children: [
-                        Consumer<MessageProvider>(
-                          builder: (context, messageProvider, child) {
-                            return messageProvider.currentMessageWidget;
-                          },
-                        ),
-                      ],
+                    child: LeftEdgeClip(
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        clipBehavior: Clip.none,
+                        children: [
+                          Consumer<MessageProvider>(
+                            builder: (context, messageProvider, child) {
+                              return messageProvider.currentMessageWidget;
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

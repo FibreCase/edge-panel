@@ -39,6 +39,7 @@ class EventCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    const SizedBox(width: 4),
                     Text(
                       "Next",
                       style: TextStyle(

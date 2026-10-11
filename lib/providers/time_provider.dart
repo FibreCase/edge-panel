@@ -1,11 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'dart:async';
+import 'package:edge_panel/utils/logger.dart';
 
 class TimeProvider extends ChangeNotifier {
   late String _currentTime;
   late String _currentDate;
   Timer? _timeTimer;
   Timer? _dateTimer;
+  Timer? _hintTimer;
+  String? _dateHint;
 
   TimeProvider() {
     final now = DateTime.now();
@@ -17,6 +20,19 @@ class TimeProvider extends ChangeNotifier {
 
   String get currentTime => _currentTime;
   String get currentDate => _currentDate;
+  String get dateDisplayText => _dateHint ?? _currentDate;
+
+  void handleCardPressed() {
+    log.i('Time card pressed');
+    _hintTimer?.cancel();
+    _dateHint = 'Clicked!';
+    _hintTimer = Timer(const Duration(seconds: 3), () {
+      _dateHint = null;
+      notifyListeners();
+    });
+    notifyListeners();
+    // TODO: 在这里处理时间卡片点击，例如通知 Python 后端调用目标 API。
+  }
 
   void _startTimeTimer() {
     final now = DateTime.now();
@@ -97,6 +113,7 @@ class TimeProvider extends ChangeNotifier {
   void dispose() {
     _timeTimer?.cancel();
     _dateTimer?.cancel();
+    _hintTimer?.cancel();
     super.dispose();
   }
 }
